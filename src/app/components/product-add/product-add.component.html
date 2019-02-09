@@ -1,0 +1,49 @@
+<div style="padding:5px" class="col-lg-10 offset-lg-1">
+	<h3>{{titulo}}</h3>
+</div>
+<hr/>
+<form style="margin-top:30px" #formProducto="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10 offset-lg-1" id="form-producto">
+	<div class="form-group row">
+		<div class="col">
+			<input id="nombre" type="text" #nombre="ngModel" name="nombre" [(ngModel)]="producto.name" class="form-control" placeholder="Nombre del Producto" required />
+			<small id="nombrehelp" class="form-text text-muted">El nombre es obligatorio</small>
+		</div>
+		<div class="col">
+			<div class="alert alert-danger" role="alert" *ngIf="!nombre.valid && nombre.touched">
+				El nombre debe ser obligatorio
+			</div>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col">
+			<textarea #descripcion="ngModel" name="descripcion" [(ngModel)]="producto.description" class="form-control" rows="3" placeholder="Describe tu producto" required></textarea>
+			<small id="descriptionhelp" class="form-text text-muted">El producto debe tener un descripción</small>
+		</div>
+		<div class="col">
+			<div *ngIf="!descripcion.valid && descripcion.touched" class="alert alert-danger" role="alert">	
+				La descripción es obligatoria
+			</div>	
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col">
+			<input type="text" #precio="ngModel" name="precio" [(ngModel)]="producto.price" class="form-control" required pattern="[0-9]+"/>
+			<small id="preciohelp" class="form-text text-muted">El producto debe tener un precio y debe ser un valor numerico</small>
+		</div>	
+		<div class="col">
+			<div *ngIf="!precio.valid && precio.touched" class="alert alert-danger" role="alert">	
+				El precio es obligatorio y debe ser un valor valido
+			</div>	
+		</div>
+	</div>	
+	<div class="form-group">
+		<div style="margin-left:200px" *ngIf="is_edit">
+			<img src="{{url+'get-image-product/'+producto.image}}" width="100"/>
+		</div>
+		<label for="">Imagen del producto</label>
+		<input type="file" class="form-control-file" (change)="fileChangeEvent($event)"/>
+		<small id="preciohelp" class="form-text text-muted">No es obligatorio, pero una producto debería tener asociada una imagen que lo represente</small>
+	</div>	
+	<br/>
+	<input type="submit" value="{{titulo}}" [disabled]="!formProducto.form.valid" class="btn btn-success"/>
+</form>

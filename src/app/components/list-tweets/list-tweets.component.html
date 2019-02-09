@@ -1,0 +1,26 @@
+<h3>Tweets:</h3>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let tweet of tweets">{{tweet['full_text']}}</li>
+</ul>
+<br>
+<h3>Mentions:</h3>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let mention of mentions">{{mention['full_text']}}</li>
+</ul>
+<br>
+<h3>Twitear:</h3>
+<form style="margin-top:30px" #f="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10 offset-lg-1" id="form-tweet">
+    <div class="form-group row">
+      <div class="col">
+        <input id="tweet_text" type="text" name="tweet_text" [(ngModel)]="tweet_text" class="form-control" placeholder="Escriba su tweet" required />
+        <small id="nombrehelp" class="form-text text-muted">El tweet es obligatorio</small>
+      </div>
+      <div class="col">
+        <div class="alert alert-danger" role="alert" *ngIf="!tweet.valid && tweet.touched">
+          Debe escribir un tweet
+        </div>
+      </div>
+    </div>	
+    <br/>
+    <input type="submit" value="Enviar" [disabled]="!f.form.valid" class="btn btn-success"/>
+  </form>

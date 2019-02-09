@@ -1,0 +1,27 @@
+<h2>{{title}}</h2>
+<hr>
+
+<div *ngIf="!products">
+  Cargando listado de productos...
+</div>
+
+<div *ngIf="products">
+  <div class="row">
+    <div style="margin-bottom:10px" class="col-lg-3" *ngFor="let product of products">
+      <div class="card">
+        <img class="producto_imagen card-img-top" src="{{url+'get-image-product/'+product.image}}" alt="Imagen de Producto">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p style="font-size:14px">{{product.price}} $</p>
+          <div style="text-align:center">
+            <div class="options">
+              <a style="margin-right:15px" [routerLink]="['/product-detail', product._id]" class="btn btn-info">Ver</a>
+              <a style="margin-right:15px" [routerLink]="['/product-edit', product._id]" class="btn btn-success">Editar</a>
+              <a style="color:white" (click)="deleteConfirm(product._id, product.name)" class="btn btn-danger">Borrar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

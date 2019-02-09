@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+	
+}
+#content{
+	padding:0px;
+	margin-top:30px;
+	margin-bottom:30px;
+	border-radius:2px;
+	background:white;
+	box-shadow: 2px 5px 5px #ccc;
+	overflow:hidden;
+}
+
+#header{
+	color:white;
+	margin:0px;
+	height:90px;
+	line-height:90px;
+}
+
+#header h1{
+	display:block;
+	line-height: 75px;
+	font-weight:bold;
+	font-size:30px;
+	margin-left:10px;
+}
+
+.activado{
+	background:rgba(49, 183, 224,.4);
+	color:#494c46;
+	/*border-bottom:2x solid #E03137;*/
+	box-shadow: inset 0 0 2px #555953;
+}
+
+nav div ul li a{
+	transition: all 0.5s ease;
+}
+
+nav div ul li a:hover{
+  background:rgba(49, 183, 224,.4);
+  color:#494c46;
+  -webkit-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  transform: scale(0.8);
+  box-shadow: inset 0 0 0 2px #555953;
+}
+.producto_imagen{
+	width:100%;
+	height:200px;
+	margin:0px auto;
+	display:block;
+	max-width:100%;
+}
+#footer{
+	padding-top:15px;
+	margin-top: 50px;
+	color:gray;
+}
